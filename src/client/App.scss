@@ -1,0 +1,12 @@
+.app {
+	display: block;
+	position: relative;
+    background: #000000;
+    min-height: 100%;
+    transition: all 0.5s;
+}
+
+.main-section {
+    position: relative;
+    z-index: 2;
+}

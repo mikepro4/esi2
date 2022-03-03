@@ -12,6 +12,7 @@ import {
 
 import ConnectWallet from "./type/connect_wallet"
 import DeleteCollection from "./type/delete_collection"
+import EditCollection from "./type/edit_collection"
 
 class Drawer extends Component {
 
@@ -34,6 +35,8 @@ class Drawer extends Component {
                 return (<ConnectWallet hideDrawer={() => this.hideDrawer()} enablePortal/>)
             case "delete-collection":
                 return (<DeleteCollection hideDrawer={() => this.hideDrawer()} enablePortal/>)
+            case "edit-collection":
+                return (<EditCollection hideDrawer={() => this.hideDrawer()} enablePortal/>)
             default:
                 return ;
         }
@@ -82,5 +85,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-    hideDrawer
+    hideDrawer,
 })(Drawer);

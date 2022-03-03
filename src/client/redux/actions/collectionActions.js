@@ -92,21 +92,16 @@ export const deleteCollection = (collectionId, success) => async (
 // ===========================================================================
 
 
-export const updateCollectionDetails = (collection, data, success) => async (
+export const updateCollectionDetails = (collection, success) => async (
     dispatch,
 	getState,
 	api
 ) => {
 
-    let newMetadata = {
-        ...collection.metadata,
-        ...data
-    }
-
     await api
         .post("/collection/update", { 
             collectionId: collection._id, 
-            metadata: newMetadata,
+            metadata: collection.metadata,
         })
         .then(response => {
             if (success) {

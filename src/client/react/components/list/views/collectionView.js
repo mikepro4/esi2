@@ -33,11 +33,16 @@ class collectionView extends Component {
         })
     }
 
+    editCollection = () => {
+        this.props.showDrawer("edit-collection", this.props.item)
+    }
+
     render() {
         return (
             <div> 
-                <div>{this.props.item.metadata.title} from {this.props.item.metadata.contractAddress}</div>
+                <div>{this.props.item.metadata.title} for {this.props.item.metadata.contractAddress}</div>
                 <div onClick={() => this.deleteCollection()}>Delete</div>
+                <div onClick={() => this.editCollection()}>Edit</div>
             </div>)
     }
 }

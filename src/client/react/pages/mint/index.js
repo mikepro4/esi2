@@ -7,6 +7,10 @@ import moment from 'moment'
 import classNames from "classnames";
 import * as _ from "lodash"
 
+import {
+    showDrawer
+} from "../../../redux/actions/appActions"
+
 
 class Mint extends Component {
 
@@ -32,6 +36,10 @@ class Mint extends Component {
         return (
             <div className="home-container">
                 Mint
+
+                <div className="connect-wallet" onClick={() => this.props.showDrawer("connect-wallet")}>
+                    Connect Wallet
+                </div>
             </div>
 
         );
@@ -47,5 +55,6 @@ function mapStateToProps(state) {
 
 export default {
     component: withRouter(connect(mapStateToProps, {
+        showDrawer
     })(Mint))
 }

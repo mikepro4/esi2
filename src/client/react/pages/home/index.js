@@ -32,7 +32,7 @@ class Home extends Component {
 
         return (
             <div className="home-container">
-                Home
+                Collections
             </div>
 
         );

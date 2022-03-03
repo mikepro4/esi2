@@ -20,28 +20,12 @@ class Nav extends Component {
 
         let mainLinks = [
 			{
-			  	url: "/featured",
-				name: "Featured",
-			},
-            {
-                url: "/all",
-                name: "All NFTs",
-            },
-			{
-			  	url: "/sale",
-				name: "On Sale",
+			  	url: "/",
+				name: "Home",
 			},
 			{
-			  	url: "/about",
-				name: "About",
-			},
-			{
-			  	url: "/planet",
-				name: "Planet",
-			},
-			{
-			  	url: "/iteration2",
-				name: "Iteration 2",
+			  	url: "/mint",
+				name: "Mint",
 			}
 		]
 

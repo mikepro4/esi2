@@ -41,15 +41,16 @@ class App extends Component {
                     "app": true
                 })}
             >
-                App
 
-                <div className="connect-wallet" onClick={() => this.props.showDrawer("connect-wallet")}>
-                    Connect Wallet
+                <div className="main-section">
+                    <div className="app-route-container">
+                        {renderRoutes(this.props.route.routes)}
+                    </div>
                 </div>
-
+                
                 <div className="placeholder"></div>
 
-                <Scroll/>
+                <Scroll />
                 {this.props.drawerOpen && <Drawer type={this.props.drawerType} />}
             </div>
         )

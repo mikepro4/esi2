@@ -11,6 +11,7 @@ import {
 } from '../../../redux/actions/appActions'
 
 import ConnectWallet from "./type/connect_wallet"
+import DeleteCollection from "./type/delete_collection"
 
 class Drawer extends Component {
 
@@ -31,6 +32,8 @@ class Drawer extends Component {
         switch (type) {
             case "connect-wallet":
                 return (<ConnectWallet hideDrawer={() => this.hideDrawer()} enablePortal/>)
+            case "delete-collection":
+                return (<DeleteCollection hideDrawer={() => this.hideDrawer()} enablePortal/>)
             default:
                 return ;
         }

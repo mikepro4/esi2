@@ -7,6 +7,21 @@ import moment from 'moment'
 import classNames from "classnames";
 import * as _ from "lodash"
 
+import ListResults from "../../../react/components/list"
+
+import { 
+    updateCollection 
+} from "../../../redux/actions/appActions"
+
+import { 
+    searchCollections, 
+    loadCollection, 
+    createCollection 
+} from "../../../redux/actions/collectionActions"
+
+import {
+    nftAddress
+} from "../../../../../config"
 
 class Home extends Component {
 
@@ -14,8 +29,8 @@ class Home extends Component {
         super(props)
 
         this.state = {
+            count: null
         }
-
     }
 
     componentDidMount() {
@@ -28,11 +43,45 @@ class Home extends Component {
         </Helmet>
     )
 
+    createCollection = () => {
+        let newCollection = {
+            metadata: {
+                title: "Collection " + (this.state.count + 1),
+                createdAt: new Date(),
+                contractAddress: nftAddress
+            },
+        }
+
+        this.props.createCollection(newCollection, (collection) => {
+            this.props.updateCollection(true)
+
+        })
+    }
+
     render() {
 
         return (
             <div className="home-container">
-                Collections
+                <div>Current contract address: {nftAddress}</div>
+                <div>Collections: {this.state.count }</div>
+                <div 
+                    className="add-collection"
+                    onClick={() => this.createCollection()}
+                >Add</div>
+
+                <ListResults
+                    type="collections"
+                    resultType="collection"
+                    searchCollection={this.props.searchCollections}
+                    updateTotal={(count) => {
+                        this.setState({
+                            count: count
+                        })
+                    }}
+                    updateCollectionItem={this.props.loadCollection}
+                    handleClick={() => this.props.handleClick()}
+                />
+
             </div>
 
         );
@@ -48,5 +97,9 @@ function mapStateToProps(state) {
 
 export default {
     component: withRouter(connect(mapStateToProps, {
+        searchCollections, 
+        loadCollection,
+        createCollection,
+        updateCollection
     })(Home))
 }

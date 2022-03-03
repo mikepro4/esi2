@@ -13,6 +13,7 @@ import {
 
 
 import NFTView from "./views/nftView"
+import CollectionView from "./views/collectionView"
 
 class ListResults extends Component {
 
@@ -181,6 +182,16 @@ class ListResults extends Component {
 
 	renderResultItem = (item) => {
 		switch (this.props.resultType) {
+            case "collection":
+                if(!this.state.updateCollection) {
+                    return (<CollectionView
+                        item={item}
+                        key={item._id}
+                        handleClick={() => this.props.handleClick()}
+                    />)
+                } else {
+                    return(<div key={item._id}/>)
+                }
             case "nft":
                 if(!this.state.updateCollection) {
                     return (<NFTView

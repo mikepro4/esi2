@@ -28,7 +28,7 @@ class CollectionSettingsForm extends Component {
                 />
 
                 <Button
-                    className="submit-button"
+                    className="main-button"
                     loading={this.props.loading}
                     type="submit"
                     text="Update"

@@ -16,7 +16,7 @@ import {
 
 class collectionView extends Component {
 
-    constructor (props) {
+    constructor(props) {
         super(props)
 
         this.state = {
@@ -39,10 +39,41 @@ class collectionView extends Component {
 
     render() {
         return (
-            <div> 
-                <div>{this.props.item.metadata.title} for {this.props.item.metadata.contractAddress}</div>
-                <div onClick={() => this.deleteCollection()}>Delete</div>
-                <div onClick={() => this.editCollection()}>Edit</div>
+            <div className="collection-row">
+                <Link to={"/collection/" + this.props.item._id} className="row-left">
+                    <div className="collection-title">
+                        {this.props.item.metadata.title}
+                    </div>
+
+                    <div className="collection-stats">
+                        <span className="collection-pinned">
+                            0
+                        </span>
+
+                        <span className="collection-divider">
+                            /
+                        </span>
+
+                        <span className="collection-total">
+                            0
+                        </span>
+                    </div>
+                </Link>
+
+                <div className="row-right">
+                    <ul className="collection-actions">
+
+                        <li onClick={() => this.deleteCollection()}>
+                            <Icon icon="trash" />
+                        </li>
+
+                        <li onClick={() => this.editCollection()}>
+                            <Icon icon="edit" />
+                        </li>
+
+                    </ul>
+                </div>
+
             </div>)
     }
 }

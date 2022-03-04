@@ -10,3 +10,69 @@
     position: relative;
     z-index: 2;
 }
+
+.page-header {
+    display: flex;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    border-bottom: 1px solid rgba($white,0.1);
+    padding: 0 10px 0 20px;
+    z-index: 10;
+    background: $black;
+
+    .breadcrumbs {
+        position: relative;
+        top: -1px;
+        display: flex;
+        align-items: center;
+
+        li {
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+
+            svg path {
+                fill: rgba($white, 0.3);
+                transition: all 0.2s;
+            }
+
+            .breadcrumb-title {
+                font-size: 16px;
+                color: rgba($white, 0.3);
+
+                a {
+                    transition: all 0.2s;
+                    color: rgba($white, 0.3);
+
+                    &:hover {
+                        color: rgba($white, 1);
+                    }
+                }
+
+                &.active {
+                    color: rgba($white, 1);
+                }
+            }
+
+            a:hover {
+                svg path {
+                    fill: rgba($white, 1)
+                }
+            }
+
+            
+        }
+    }
+
+    .actions-icon {
+        position: relative;
+        top: -1px;
+        padding: 10px;
+    }
+}

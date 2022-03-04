@@ -13,6 +13,7 @@ import {
 import ConnectWallet from "./type/connect_wallet"
 import DeleteCollection from "./type/delete_collection"
 import EditCollection from "./type/edit_collection"
+import HomeActions from "./type/home_actions"
 
 class Drawer extends Component {
 
@@ -37,6 +38,8 @@ class Drawer extends Component {
                 return (<DeleteCollection hideDrawer={() => this.hideDrawer()} enablePortal/>)
             case "edit-collection":
                 return (<EditCollection hideDrawer={() => this.hideDrawer()} enablePortal/>)
+            case "home-actions":
+                return (<HomeActions hideDrawer={() => this.hideDrawer()} enablePortal/>)
             default:
                 return ;
         }

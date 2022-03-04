@@ -187,6 +187,7 @@ class ListResults extends Component {
                     return (<CollectionView
                         item={item}
                         key={item._id}
+                        count={this.state.count}
                         handleClick={() => this.props.handleClick()}
                     />)
                 } else {

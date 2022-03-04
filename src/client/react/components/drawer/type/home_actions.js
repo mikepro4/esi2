@@ -13,8 +13,13 @@ import {
 } from "../../../../redux/actions/appActions"
 
 import {
-    deleteCollection
+    deleteCollection,
+    createCollection
 } from "../../../../redux/actions/collectionActions"
+
+import {
+    nftAddress
+} from "../../../../../../config"
 
 
 class DeleteCollection extends Component {
@@ -27,27 +32,42 @@ class DeleteCollection extends Component {
         }
     }
 
-    deleteCollection = () => {
-        this.props.deleteCollection(this.props.app.drawerData.collectionId, () => {
+    createCollection = () => {
+        this.setState({
+            loading: true
+        })
+        
+        let newCollection = {
+            metadata: {
+                title: "Collection " + (this.props.app.drawerData.count + 1),
+                createdAt: new Date(),
+                contractAddress: nftAddress
+            },
+        }
+
+        this.props.createCollection(newCollection, (collection) => {
             this.props.updateCollection(true)
             this.props.hideDrawer()
+
         })
     }
 
 	render() {
         return (
-            <div className={"app-drawer-content-container standard-drawer connect-wallet theme-" + this.props.theme}>
-               <div className="drawer-header">
+            <div className={"app-drawer-content-container standard-drawer theme-" + this.props.theme}>
+
+                <div className="drawer-header">
                    <div className="drawer-title">
-                        Delete {this.props.app.drawerData.collectionTitle} ?
+                        Home
                    </div>
                 </div>
 
                <Button
                     className="main-button"
-                    onClick={() => this.deleteCollection()}
+                    loading={this.state.loading}
+                    onClick={() => this.createCollection()}
                     type="submit"
-                    text="Confirm"
+                    text="Create collection"
                     large="true"
                 />
             </div>
@@ -65,5 +85,6 @@ function mapStateToProps(state) {
 export default withRouter(connect(mapStateToProps, {
     deleteCollection,
     updateCollection,
-    hideDrawer
+    hideDrawer,
+    createCollection
 })(DeleteCollection));

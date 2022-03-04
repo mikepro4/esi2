@@ -6,6 +6,7 @@ import qs from "qs";
 import moment from 'moment'
 import classNames from "classnames";
 import * as _ from "lodash"
+import { Icon, Button, Classes, Intent } from "@blueprintjs/core";
 
 
 class Collection extends Component {
@@ -20,7 +21,7 @@ class Collection extends Component {
 
     componentDidMount() {
     }
-     
+
 
     renderHead = () => (
         <Helmet>
@@ -32,7 +33,30 @@ class Collection extends Component {
 
         return (
             <div className="home-container">
-                Collection
+                <div className="page-header">
+                    <ul className="breadcrumbs">
+                        <li>
+                            <Link to="/">
+                                <Icon icon="home" />
+                            </Link>
+                        </li>
+
+                        <li>
+                            <Icon icon="chevron-right" />
+                        </li>
+
+                        <li>
+                            <div className="breadcrumb-title active">
+                                Collection 1
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <div className="actions-icon">
+                        <Icon icon="settings" />
+                    </div>
+                </div>
             </div>
 
         );

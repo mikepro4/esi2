@@ -6,11 +6,13 @@ import qs from "qs";
 import moment from 'moment'
 import classNames from "classnames";
 import * as _ from "lodash"
+import { Icon, Button, Classes, Intent  } from "@blueprintjs/core";
 
 import ListResults from "../../../react/components/list"
 
 import { 
-    updateCollection 
+    updateCollection,
+    showDrawer
 } from "../../../redux/actions/appActions"
 
 import { 
@@ -62,12 +64,47 @@ class Home extends Component {
 
         return (
             <div className="home-container">
-                <div>Current contract address: {nftAddress}</div>
-                <div>Collections: {this.state.count }</div>
-                <div 
+                <div className="page-header">
+                    <ul className="breadcrumbs">
+                        <li>
+                            <Link to="/">
+                                <Icon icon="home" />
+                            </Link>
+                        </li>
+{/* 
+                        <li>
+                            <Icon icon="chevron-right" />
+                        </li>
+
+                        <li>
+                            <div className="breadcrumb-title">
+                                <Link to="/collection/784678648">Collection 1</Link>
+                            </div>
+                        </li>
+
+                        <li>
+                            <Icon icon="chevron-right" />
+                        </li>
+
+                        <li>
+                            <div className="breadcrumb-title active">
+                                #1
+                            </div>
+                        </li> */}
+
+                    </ul>
+
+                    <div className="actions-icon" onClick={() => this.props.showDrawer("home-actions", {
+                        count: this.state.count
+                    })}>
+                        <Icon icon="settings" />
+                    </div>
+                </div>
+
+                {/* <div 
                     className="add-collection"
                     onClick={() => this.createCollection()}
-                >Add</div>
+                >Add</div> */}
 
                 <ListResults
                     type="collections"
@@ -100,6 +137,7 @@ export default {
         searchCollections, 
         loadCollection,
         createCollection,
-        updateCollection
+        updateCollection,
+        showDrawer
     })(Home))
 }

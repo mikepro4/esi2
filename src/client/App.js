@@ -48,7 +48,6 @@ class App extends Component {
                     </div>
                 </div>
                 
-                <div className="placeholder"></div>
 
                 <Scroll />
                 {this.props.drawerOpen && <Drawer type={this.props.drawerType} />}

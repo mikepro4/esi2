@@ -29,6 +29,7 @@
 
 // list
 @import "../react/components/list/views/nftView.scss";
+@import "../react/components/list/views/collectionView.scss";
 
 // componenta
 @import "../react/components/header/index.scss";
@@ -37,7 +38,6 @@
 
 html {
     touch-action: manipulation;
-    user-select: none;
 }
 
 body {

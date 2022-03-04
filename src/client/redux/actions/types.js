@@ -16,10 +16,16 @@ export const HIDE_DRAWER = "app/HIDE_DRAWER"
 
 // =============================================================================
 
-// App
+// Home
 
 export const LOAD_COLLECTION = "app/LOAD_COLLECTION"
 export const CLEAR_COLLECTION = "app/CLEAR_COLLECTION"
 
 // =============================================================================
+
+
+// NFT
+
+export const LOAD_NFT = "app/LOAD_NFT"
+export const CLEAR_NFT = "app/CLEAR_NFT"
 

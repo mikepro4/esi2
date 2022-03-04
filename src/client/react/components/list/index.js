@@ -130,7 +130,7 @@ class ListResults extends Component {
             this.props.identifier,
 			newOffset,
             this.state.limit, 
-            "",
+            this.props.query,
             (results) => {
                 let newCollection = _.concat(this.state.collection, results.all)
 

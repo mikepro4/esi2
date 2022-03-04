@@ -8,12 +8,20 @@ import classNames from "classnames";
 import * as _ from "lodash"
 import { Icon, Button, Classes, Intent } from "@blueprintjs/core";
 
+import ListResults from "../../components/list"
+
 import { 
     showDrawer
 } from "../../../redux/actions/appActions"
 
 import {
-    loadCollection, loadCollectionToState
+    searchNFTs,
+    loadNFTDetails
+} from "../../../redux/actions/nftActions"
+
+import {
+    loadCollection,
+    loadCollectionToState
 } from "../../../redux/actions/collectionActions"
 
 
@@ -72,6 +80,22 @@ class Collection extends Component {
                         <Icon icon="settings" />
                     </div>
                 </div>
+
+                <ListResults
+                    type="collection"
+                    resultType="nft"
+                    searchCollection={this.props.searchNFTs}
+                    updateTotal={(count) => {
+                        this.setState({
+                            count: count
+                        })
+                    }}
+                    query={{
+                        collectionId: this.getQueryParams().id
+                    }}
+                    updateCollectionItem={this.props.loadNFTDetails}
+                    handleClick={() => this.props.handleClick()}
+                />
             </div>
 
         );
@@ -90,6 +114,8 @@ export default {
     component: withRouter(connect(mapStateToProps, {
         loadCollection, 
         loadCollectionToState,
-        showDrawer
+        showDrawer,
+        searchNFTs,
+        loadNFTDetails
     })(Collection))
 }

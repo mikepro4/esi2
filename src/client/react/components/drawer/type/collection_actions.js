@@ -14,9 +14,9 @@ import {
 
 import CollectionActionsForm from "./collection_actions_form"
 
-// import {
-//     addToCollection
-// } from "../../../../redux/actions/nftActions"
+import {
+    updateNFTCollection
+} from "../../../../redux/actions/nftActions"
 
 import {
     nftAddress
@@ -35,7 +35,19 @@ class CollectionActions extends Component {
 
     handleFormSubmit = (data) => {
         console.log(data)
+
+        let collectionId = this.getQueryParams().id
+        let nftId = data.nftId
+
+        this.props.updateNFTCollection(nftId, collectionId, (data) => {
+            console.log(data)
+            this.props.hideDrawer()
+        })
     }
+
+    getQueryParams = () => {
+		return qs.parse(this.props.location.search.substring(1));
+    };
 
 	render() {
         return (
@@ -67,4 +79,5 @@ function mapStateToProps(state) {
 export default withRouter(connect(mapStateToProps, {
     updateCollection,
     hideDrawer,
+    updateNFTCollection
 })(CollectionActions));

@@ -15,10 +15,13 @@ class nftView extends Component {
     }
 
     componentDidMount = () => {
+        console.log(this.props.item)
     }
 
     render() {
-        return (<div> Nft</div>)
+        return (
+            <div> {this.props.item.nft.name}</div>
+        )
     }
 }
 

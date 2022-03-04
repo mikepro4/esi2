@@ -8,6 +8,10 @@ import classNames from "classnames";
 import * as _ from "lodash"
 import { Icon, Button, Classes, Intent } from "@blueprintjs/core";
 
+import {
+    loadCollection, loadCollectionToState
+} from "../../../redux/actions/collectionActions"
+
 
 class Collection extends Component {
 
@@ -20,7 +24,14 @@ class Collection extends Component {
     }
 
     componentDidMount() {
+        this.props.loadCollection(this.getQueryParams().id, (data) => {
+            this.props.loadCollectionToState(data)
+        })
     }
+
+    getQueryParams = () => {
+		return qs.parse(this.props.location.search.substring(1));
+    };
 
 
     renderHead = () => (
@@ -47,7 +58,7 @@ class Collection extends Component {
 
                         <li>
                             <div className="breadcrumb-title active">
-                                Collection 1
+                                {this.props.collection.details && this.props.collection.details.metadata.title}
                             </div>
                         </li>
 
@@ -65,12 +76,15 @@ class Collection extends Component {
 
 function mapStateToProps(state) {
     return {
-        app: state.app
+        app: state.app,
+        collection: state.collection
     };
 }
 
 
 export default {
     component: withRouter(connect(mapStateToProps, {
+        loadCollection, 
+        loadCollectionToState
     })(Collection))
 }

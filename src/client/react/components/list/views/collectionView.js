@@ -11,6 +11,7 @@ import {
 } from "../../../../redux/actions/appActions"
 
 import {
+    loadCollectionToState,
     deleteCollection
 } from "../../../../redux/actions/collectionActions"
 
@@ -40,7 +41,7 @@ class collectionView extends Component {
     render() {
         return (
             <div className="collection-row">
-                <Link to={"/collection/" + this.props.item._id} className="row-left">
+                <Link to={"/collection?id=" + this.props.item._id} className="row-left" onClick={() => this.props.loadCollectionToState(this.props.item)}>
                     <div className="collection-title">
                         {this.props.item.metadata.title}
                     </div>
@@ -86,5 +87,6 @@ function mapStateToProps(state) {
 export default withRouter(connect(mapStateToProps, {
     deleteCollection,
     updateCollection,
-    showDrawer
+    showDrawer,
+    loadCollectionToState
 })(collectionView));

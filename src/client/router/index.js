@@ -18,7 +18,7 @@ export default [
             },
             {
                 ...Collection,
-                path: "/collection/:collectionId",
+                path: "/collection",
                 exact: true,
                 params: {
                     name: "Colelction"

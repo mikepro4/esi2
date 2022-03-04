@@ -16,3 +16,10 @@ export const HIDE_DRAWER = "app/HIDE_DRAWER"
 
 // =============================================================================
 
+// App
+
+export const LOAD_COLLECTION = "app/LOAD_COLLECTION"
+export const CLEAR_COLLECTION = "app/CLEAR_COLLECTION"
+
+// =============================================================================
+

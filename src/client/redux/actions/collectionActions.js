@@ -4,6 +4,36 @@ import qs from "qs";
 import axios from "axios";
 import update from "immutability-helper";
 
+import {
+    LOAD_COLLECTION,
+    CLEAR_COLLECTION
+} from "./types";
+
+export const loadCollectionToState = (data, success) => async (
+    dispatch,
+    getState,
+    api
+) => {
+    dispatch({
+        type: LOAD_COLLECTION,
+        payload: data
+    });
+};
+
+// ===========================================================================
+
+export const updateCollection = (update, success) => async (
+    dispatch,
+    getState,
+    api
+) => {
+    dispatch({
+        type: UPDATE_COLLECTION,
+        payload: update
+    });
+};
+
+
 // ===========================================================================
 
 export const createCollection = (collectionItem, success) => async (

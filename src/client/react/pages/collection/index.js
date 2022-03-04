@@ -8,6 +8,10 @@ import classNames from "classnames";
 import * as _ from "lodash"
 import { Icon, Button, Classes, Intent } from "@blueprintjs/core";
 
+import { 
+    showDrawer
+} from "../../../redux/actions/appActions"
+
 import {
     loadCollection, loadCollectionToState
 } from "../../../redux/actions/collectionActions"
@@ -64,7 +68,7 @@ class Collection extends Component {
 
                     </ul>
 
-                    <div className="actions-icon">
+                    <div className="actions-icon" onClick={() => this.props.showDrawer("collection-actions")}>
                         <Icon icon="settings" />
                     </div>
                 </div>
@@ -85,6 +89,7 @@ function mapStateToProps(state) {
 export default {
     component: withRouter(connect(mapStateToProps, {
         loadCollection, 
-        loadCollectionToState
+        loadCollectionToState,
+        showDrawer
     })(Collection))
 }

@@ -14,6 +14,7 @@ import ConnectWallet from "./type/connect_wallet"
 import DeleteCollection from "./type/delete_collection"
 import EditCollection from "./type/edit_collection"
 import HomeActions from "./type/home_actions"
+import CollectionActions from "./type/collection_actions"
 
 class Drawer extends Component {
 
@@ -40,6 +41,8 @@ class Drawer extends Component {
                 return (<EditCollection hideDrawer={() => this.hideDrawer()} enablePortal/>)
             case "home-actions":
                 return (<HomeActions hideDrawer={() => this.hideDrawer()} enablePortal/>)
+            case "collection-actions":
+                return (<CollectionActions hideDrawer={() => this.hideDrawer()} enablePortal/>)
             default:
                 return ;
         }
@@ -89,4 +92,5 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
     hideDrawer,
+    CollectionActions
 })(Drawer);
